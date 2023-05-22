@@ -91,3 +91,10 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search("Toronto");
+
+// Forecast JS
+function displayForecast() {
+  let apiKey = "280t25d47b04503o6c154f3bbf24acb1";
+  let url = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}$units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
