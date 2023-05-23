@@ -48,6 +48,7 @@ function displayTemperature(response) {
   dateElement.innerHTML = formatDate(response.data.time * 1000);
   iconElement.setAttribute("src", response.data.condition.icon_url);
   iconElement.setAttribute("alt", response.data.condition.description);
+  getForecast(response.data.coordinates);
 }
 
 function search(city) {
@@ -91,15 +92,15 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search("Toronto");
-displayForecast();
-// Forecast JS
-//function searchForecast() {
-//let apiKey = "280t25d47b04503o6c154f3bbf24acb1";
-//let url = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}$units=metric`;
-// axios.get(url).then(searchForecast);
-//}
 
-function displayForecast() {
+// Forecast JS
+function getForecast(coordinates) {
+  let apiKey = "280t25d47b04503o6c154f3bbf24acb1";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
+function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
 
   let days = ["Mon", "Tues", "Wed", "Thurs", "Fri"];
