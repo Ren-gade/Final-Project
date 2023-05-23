@@ -43,9 +43,8 @@ li:first-letter {
 }
 
 .weather-app {
-  padding: 20px;
-  border: 1px solid #dadde1;
-  border-radius: 5px;
+  padding: 20px 0 120px 0;
+  border: none;
 }
 
 .overview {
@@ -83,4 +82,7 @@ li:first-letter {
 .open-source {
   max-width: 600px;
   margin: 30px auto;
+}
+.weather-forecast {
+  font-size: larger;
 }
